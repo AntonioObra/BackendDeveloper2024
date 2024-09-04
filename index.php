@@ -36,7 +36,7 @@ function broj_samoglasnika(string $rijec) : int
     return $broj_samoglasnika;
 }
 
-function dobi_sve_rijeci()
+function dobi_sve_rijeci() : array
 {
     // * Dobi sve rijeci iz words.json
     $json_data = json_decode(file_get_contents("words.json"));
@@ -45,7 +45,7 @@ function dobi_sve_rijeci()
     return $words;
 }
 
-function dodaj_novu_rijec(string $rijec)
+function dodaj_novu_rijec(string $rijec) : void
 {
     // * Ako ne postoji rijec izbaci
     if (empty($rijec)) {
