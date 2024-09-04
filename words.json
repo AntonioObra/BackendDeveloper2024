@@ -1,0 +1,32 @@
+[
+    {
+        "rijec": "test",
+        "broj_slova": 4,
+        "broj_suglasnika": 3,
+        "broj_samoglasnika": 1
+    },
+    {
+        "rijec": "antonio",
+        "broj_slova": 7,
+        "broj_suglasnika": 3,
+        "broj_samoglasnika": 4
+    },
+    {
+        "rijec": "algebra",
+        "broj_slova": 7,
+        "broj_suglasnika": 4,
+        "broj_samoglasnika": 3
+    },
+    {
+        "rijec": "krk",
+        "broj_slova": 3,
+        "broj_suglasnika": 3,
+        "broj_samoglasnika": 0
+    },
+    {
+        "rijec": "marko",
+        "broj_slova": 5,
+        "broj_suglasnika": 3,
+        "broj_samoglasnika": 2
+    }
+]
