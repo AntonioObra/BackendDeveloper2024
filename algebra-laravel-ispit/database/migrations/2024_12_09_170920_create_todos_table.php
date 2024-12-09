@@ -19,7 +19,7 @@ return new class extends Migration {
                 ->onDelete("cascade");
             $table->text("title");
             $table->longText("description");
-            $table->boolean("is_done");
+            $table->boolean("is_done")->default(false);
             $table->timestamps();
         });
     }
