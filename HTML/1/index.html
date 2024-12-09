@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <style>
+            table {
+                border: 1px solid #d0d0d0;
+            }
+
+            td {
+                border: 1px solid;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Ime</td>
+                        <td>
+                            <input type="text" name="ime" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Prezime</td>
+                        <td>
+                            <input type="text" name="prezime" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Email</td>
+                        <td>
+                            <input type="email" name="email" id="email" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Drzava</td>
+                        <td>
+                            <select name="" id="">
+                                <option value="">Hrvatska</option>
+                                <option value="">Bosna</option>
+                                <option value="">Slovenija</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Spol:</td>
+                        <td>
+                            <label for="muski">Muski</label>
+                            <input
+                                type="radio"
+                                name="spol"
+                                id="muski"
+                                value="Muski"
+                            />
+                            <label for="zenski">Zenski</label>
+                            <input
+                                type="radio"
+                                name="spol"
+                                id="zenski"
+                                value="Zenski"
+                            />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Zanima me:</td>
+                        <td>
+                            <label for="Plivanje">Plivanje</label>
+                            <input
+                                type="radio"
+                                name="zanimanje"
+                                id="Plivanje"
+                                value="Plivanje"
+                            />
+                            <label for="Penjanje">Penjanje</label>
+                            <input
+                                type="radio"
+                                name="zanimanje"
+                                id="Penjanje"
+                                value="Penjanje"
+                            />
+                            <label for="Programiranje">Programiranje</label>
+                            <input
+                                type="radio"
+                                name="zanimanje"
+                                id="Programiranje"
+                                value="Programiranje"
+                            />
+                        </td>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td colspan="2">
+                            <button type="submit">Posalji</button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </form>
+    </body>
+</html>
