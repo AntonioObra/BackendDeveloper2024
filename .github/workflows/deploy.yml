@@ -14,25 +14,31 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Navigate to the application directory
-      - name: Navigate to app directory
-        working-directory: BackendDeveloper2024/algebra-laravel-ispit
-        run: |
-          echo "Switched to the app directory"
+      # Step 2: Verify the directory structure
+      - name: Check directory structure
+        run: ls -R
+        continue-on-error: true
 
-      # Step 3: Set up PHP (for Composer dependencies)
+      # Step 3: Navigate to the correct app directory
+      - name: Navigate to app directory
+        working-directory: algebra-laravel-ispit
+        run: |
+          echo "Switched to app directory"
+          pwd
+
+      # Step 4: Set up PHP (for Composer dependencies)
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.1' # Adjust PHP version as needed
           tools: composer
 
-      # Step 4: Install PHP dependencies
+      # Step 5: Install PHP dependencies
       - name: Install PHP dependencies
-        working-directory: BackendDeveloper2024/algebra-laravel-ispit
+        working-directory: algebra-laravel-ispit
         run: composer install --no-dev --optimize-autoloader
 
-      # Step 5: Deploy to server
+      # Step 6: Deploy to server
       - name: Deploy to server
         env:
           SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY }}
@@ -46,7 +52,7 @@ jobs:
           ssh-keyscan -H $HOST >> ~/.ssh/known_hosts
 
           # Sync application directory to the server
-          rsync -avz --delete ./BackendDeveloper2024/algebra-laravel-ispit/ $USER@$HOST:/var/www/html/BackendDeveloper2024/algebra-laravel-ispit
+          rsync -avz --delete ./algebra-laravel-ispit/ $USER@$HOST:/var/www/html/BackendDeveloper2024/algebra-laravel-ispit
 
           # Run deployment commands on the server
           ssh -i ~/.ssh/id_rsa $USER@$HOST << EOF
