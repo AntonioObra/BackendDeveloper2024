@@ -1,4 +1,5 @@
 name: Deploy to server
+
 on:
   push:
     branches:
@@ -9,23 +10,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Step 2: Navigate to the application directory
       - name: Navigate to app directory
         working-directory: BackendDeveloper2024/algebra-laravel-ispit
         run: |
           echo "Switched to the app directory"
 
+      # Step 3: Set up PHP (for Composer dependencies)
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.4' # Adjust PHP version based on your project
+          php-version: '8.1' # Adjust PHP version as needed
           tools: composer
 
+      # Step 4: Install PHP dependencies
       - name: Install PHP dependencies
+        working-directory: BackendDeveloper2024/algebra-laravel-ispit
         run: composer install --no-dev --optimize-autoloader
 
+      # Step 5: Deploy to server
       - name: Deploy to server
         env:
           SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY }}
@@ -38,10 +45,10 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H $HOST >> ~/.ssh/known_hosts
 
-          # Sync files to the server
-          rsync -avz --delete --exclude='.git' ./ $USER@$HOST:/var/www/html/BackendDeveloper2024/algebra-laravel-ispit
+          # Sync application directory to the server
+          rsync -avz --delete ./BackendDeveloper2024/algebra-laravel-ispit/ $USER@$HOST:/var/www/html/BackendDeveloper2024/algebra-laravel-ispit
 
-          # Optional: Run deployment commands on the server
+          # Run deployment commands on the server
           ssh -i ~/.ssh/id_rsa $USER@$HOST << EOF
             cd /var/www/html/BackendDeveloper2024/algebra-laravel-ispit
             php artisan migrate --force
