@@ -12,6 +12,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Navigate to app directory
+        working-directory: BackendDeveloper2024/algebra-laravel-ispit
+        run: |
+          echo "Switched to the app directory"
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4' # Adjust PHP version based on your project
+          tools: composer
+
       - name: Install PHP dependencies
         run: composer install --no-dev --optimize-autoloader
 
@@ -21,8 +32,19 @@ jobs:
           HOST: ${{ secrets.HOST }}
           USER: ${{ secrets.USER }}
         run: |
+          # Prepare SSH connection
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H $HOST >> ~/.ssh/known_hosts
+
+          # Sync files to the server
           rsync -avz --delete --exclude='.git' ./ $USER@$HOST:/var/www/html/BackendDeveloper2024/algebra-laravel-ispit
+
+          # Optional: Run deployment commands on the server
+          ssh -i ~/.ssh/id_rsa $USER@$HOST << EOF
+            cd /var/www/html/BackendDeveloper2024/algebra-laravel-ispit
+            php artisan migrate --force
+            php artisan cache:clear
+            php artisan config:clear
+          EOF
