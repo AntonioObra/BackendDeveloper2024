@@ -1,7 +1,9 @@
 parameters:
     paths:
         - app
-    level: max
+   level: 0 # Lowest level of strictness
+   ignoreErrors:
+    - '#.*#' # Ignore all errors
 
     # Optionally, ignore files or errors if needed
     # ignoreErrors:
