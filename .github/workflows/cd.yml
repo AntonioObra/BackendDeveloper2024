@@ -1,13 +1,16 @@
 name: CD Pipeline
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows:
+      - CI Pipeline
+    types:
+      - completed
 
 jobs:
   deploy:
     name: Deploy to Server
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +23,7 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
-          port: ${{ secrets.SERVER_PORT }}
+          port: 22
           script: |
             cd /var/www/html/BackendDeveloper2024
             git pull origin main
