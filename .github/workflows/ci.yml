@@ -20,7 +20,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1' # Adjust to your PHP version
+          php-version: '8.4' # Adjust to your PHP version
           tools: composer, phpunit, phpstan
 
       - name: Navigate to Project Subdirectory
