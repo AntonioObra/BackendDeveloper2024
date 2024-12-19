@@ -40,6 +40,8 @@ jobs:
             git pull origin main
             cd algebra-laravel-ispit
             composer install --no-dev --optimize-autoloader
+            npm i
+            npm run build
             php artisan migrate --force
             php artisan cache:clear
             php artisan config:clear
