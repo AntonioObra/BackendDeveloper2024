@@ -30,8 +30,8 @@ jobs:
         run: composer install --prefer-dist --no-progress --no-scripts
         working-directory: ./algebra-laravel-ispit
 
-      - name: Run PHPUnit Tests
-        run: vendor/bin/phpunit --coverage-text
+      - name: Run Pest Tests
+        run: ./vendor/bin/pest --coverage-text
         working-directory: ./algebra-laravel-ispit
 
       - name: Run PHPStan
