@@ -33,6 +33,10 @@ jobs:
           # Navigate to the server directory and pull the latest changes
           ssh -i ~/.ssh/id_rsa $USER@$HOST << EOF
             cd /var/www/html/BackendDeveloper2024
+     
+            git reset --hard
+            git clean -df
+          
             git pull origin main
             cd /algebra-laravel-ispit
             composer install --no-dev --optimize-autoloader
