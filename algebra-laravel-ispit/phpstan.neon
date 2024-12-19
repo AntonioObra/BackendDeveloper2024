@@ -1,0 +1,11 @@
+parameters:
+    paths:
+        - app
+    level: max
+
+    # Optionally, ignore files or errors if needed
+    # ignoreErrors:
+    #     - '#Some known error pattern#'
+
+includes:
+    - vendor/phpstan/extension-installer/extension.neon
