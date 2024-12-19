@@ -35,5 +35,5 @@ jobs:
         working-directory: ./algebra-laravel-ispit
 
       - name: Run PHPStan
-        run: vendor/bin/phpstan analyse
+        run: ./vendor/bin/phpstan analyse
         working-directory: ./algebra-laravel-ispit
